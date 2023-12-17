@@ -3,6 +3,7 @@ namespace WebFlightBusiness.Models;
 // 3.85 liters per 100 passenger kilometer
 public class Plane
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public int Speed { get; set; }
     public int FuelConsumption { get; set; }

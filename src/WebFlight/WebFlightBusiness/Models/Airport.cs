@@ -2,6 +2,7 @@ namespace WebFlightBusiness.Models;
 
 public class Airport
 {
+    public int Id { get; set; }
     public string Name { get; set; }
 
     public GpsCoordinate Coordinate { get; private set; }

@@ -2,6 +2,7 @@ namespace WebFlightBusiness.Models;
 
 public class Flight
 {
+    public int Id { get; set; }
     public string FlightName { get; private set; }
     public Airport Departure { get; private set; }
     public Airport Destination { get; private set; }
