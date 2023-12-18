@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Air Planes";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        @await Component.InvokeAsync("Airplane")
+    </div>
+</div>

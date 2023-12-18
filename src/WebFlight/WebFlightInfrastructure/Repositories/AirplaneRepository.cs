@@ -3,9 +3,9 @@ using WebFlightInfrastructure.Entities;
 
 namespace WebFlightInfrastructure.Repositories;
 
-public sealed class PlaneRepository : Repository<PlaneEntity>
+public sealed class AirplaneRepository : Repository<PlaneEntity>
 {
-    public PlaneRepository(DbContext dbContext) : base(dbContext)
+    public AirplaneRepository(FlightDatabase dbContext) : base(dbContext)
     {
     }
 }

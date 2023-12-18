@@ -3,13 +3,21 @@ namespace WebFlightBusiness.Models;
 public class Flight
 {
     public int Id { get; set; }
-    public string FlightName { get; private set; }
-    public Airport Departure { get; private set; }
-    public Airport Destination { get; private set; }
-    public Plane Plane { get; private set; }
-    public int Distance { get; private set; }
-    public int FuelConsumption { get; private set; }
-    public TimeOnly Duration { get; private set; }
+    public string FlightName { get; set; }
+    public Airport Departure { get; set; }
+    public Airport Destination { get; set; }
+    public Plane Plane { get; set; }
+    public int Distance { get; set; }
+    public int FuelConsumption { get; set; }
+    public TimeOnly Duration { get; set; }
+    
+
+    public Flight()
+    {
+        Departure = new Airport();
+        Destination = new Airport();
+        Plane = new Plane();
+    }
 
     public Flight(Airport dept, Airport dest, Plane plane)
     {

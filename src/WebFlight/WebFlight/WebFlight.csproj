@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
@@ -14,12 +14,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
+      <ProjectReference Include="..\WebFlightBusiness\WebFlightBusiness.csproj" />
+      <ProjectReference Include="..\WebFlightInfrastructure\WebFlightInfrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\WebFlightBusiness\WebFlightBusiness.csproj" />
-      <ProjectReference Include="..\WebFlightInfrastructure\WebFlightInfrastructure.csproj" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.14" />
     </ItemGroup>
 
 </Project>

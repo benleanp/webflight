@@ -10,6 +10,10 @@ public class Plane
     public int TakeoffEffort { get; set; }
     public TimeOnly TakeoffDuration { get; set; }
 
+    public Plane()
+    {
+        
+    }
     public Plane(string planeName)
     {
         Name = planeName;

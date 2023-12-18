@@ -1,23 +1,20 @@
-﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using WebFlight.Models;
-using WebFlight.ViewComponents;
 using WebFlightBusiness.Models;
 using WebFlightBusiness.Services;
+using WebFlightInfrastructure.Entities;
 
 namespace WebFlight.Controllers;
 
-public class HomeController : Controller
+public class FlightsController : Controller
 {
-
-    public HomeController()
+    public FlightsController()
     {
-     
+      
     }
-
     public IActionResult Index()
     {
         return View();
-    } 
+    }
+
 }

@@ -9,7 +9,7 @@ public sealed class FlightEntity : BaseEntity
     public int FuelConsumption { get; private set; }
     public TimeOnly Duration { get; private set; }
 
-    public AirportEntity Departure { get; private set; }
-    public AirportEntity Destination { get; private set; }
-    public PlaneEntity Plane { get; private set; }
+    public AirportEntity Departure { get; set; }
+    public AirportEntity Destination { get; set; }
+    public PlaneEntity Plane { get; set; }
 }

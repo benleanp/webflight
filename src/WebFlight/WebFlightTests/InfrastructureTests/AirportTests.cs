@@ -66,10 +66,10 @@ public class AirportTests
     {
         var airportRepository = new AirportRepository(database);
         var airportEntity = casaAirport.ToEntity();
-        airportRepository.Create(airportEntity);
+        airportEntity = airportRepository.Create(airportEntity);
         database.SaveChanges();
         var result = airportRepository.Delete(airportEntity);
         database.SaveChanges();
-        Assert.AreEqual(0,airportRepository.GetAll().Count); 
+        Assert.IsNull(airportRepository.Get(airportEntity)); 
     }
 }

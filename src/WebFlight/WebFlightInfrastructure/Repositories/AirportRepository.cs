@@ -5,7 +5,7 @@ namespace WebFlightInfrastructure.Repositories;
 
 public sealed class AirportRepository : Repository<AirportEntity>
 {
-    public AirportRepository(DbContext dbContext) : base(dbContext)
+    public AirportRepository(FlightDatabase dbContext) : base(dbContext)
     {
     }
 }
