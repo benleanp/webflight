@@ -9,12 +9,12 @@ namespace WebFlight.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IFlightService _flightService;
-    private readonly IAirportService _airportService;
-    private readonly IAirplaneService _airplaneService;
+    private readonly IBusinessService<Flight> _flightService;
+    private readonly IBusinessService<Airport> _airportService;
+    private readonly IBusinessService<Plane> _airplaneService;
 
-    public HomeController(IFlightService flightService, IAirportService airportService,
-        IAirplaneService airplaneService)
+    public HomeController(IBusinessService<Flight> flightService, IBusinessService<Airport> airportService,
+        IBusinessService<Plane> airplaneService)
     {
         _flightService = flightService;
         _airportService = airportService;
@@ -26,6 +26,9 @@ public class HomeController : Controller
         var model = new HomeViewModel();
         foreach (var flight in _flightService.GetAll())
         {
+            flight.CalculateDistance();
+            flight.CalculateFlightDuration();
+            flight.CalculateFuelConsumption();
             model.Flights.Add(flight);
         }
 
@@ -58,6 +61,9 @@ public class HomeController : Controller
         model.Flight.PlaneId = model.SelectedPlaneId;
         model.Flight.DepartureAirportId = model.SelectedDepartureFlightId;
         model.Flight.DestinationAirportId = model.SelectedDestinationFlightId;
+        model.Flight.Plane = null;
+        model.Flight.Destination = null;
+        model.Flight.Departure = null;
         if (model.Mode == 0)
         {
             _flightService.Add(model.Flight);

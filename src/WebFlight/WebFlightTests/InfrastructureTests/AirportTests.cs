@@ -24,7 +24,7 @@ public class AirportTests
         tangerAirport = new Airport("Tanger", new GpsCoordinate(35.72626935970025, -5.912900916903573));
         cmnFlight = new Flight(casaAirport, tangerAirport, planeBoeing);
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase")
+            .UseInMemoryDatabase(databaseName: "FlightDatabase4")
             .Options;
         database = new FlightDatabase(options);
     }

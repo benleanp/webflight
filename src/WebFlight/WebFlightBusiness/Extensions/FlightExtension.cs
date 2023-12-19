@@ -32,13 +32,11 @@ public static class FlightExtension
 
         var entity = new FlightEntity()
         {
-            Departure = model.Departure.ToEntity(),
-            Destination = model.Destination.ToEntity(),
-            Plane = model.Plane.ToEntity(),
             PlaneId = model.PlaneId,
             DepartureAirportId = model.DepartureAirportId,
             DestinationAirportId = model.DestinationAirportId,
-            Id = model.Id
+            Id = model.Id,
+            Name = model.Name,
         };
 
         return entity;

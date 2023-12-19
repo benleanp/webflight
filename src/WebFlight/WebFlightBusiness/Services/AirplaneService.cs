@@ -5,7 +5,7 @@ using WebFlightInfrastructure.Repositories;
 
 namespace WebFlightBusiness.Services;
 
-public sealed class AirplaneService : IAirplaneService
+public sealed class AirplaneService : IBusinessService<Plane>
 {
     private readonly AirplaneRepository _airplaneRepository;
 
@@ -49,6 +49,7 @@ public sealed class AirplaneService : IAirplaneService
     public Plane Delete(int id)
     {
         var entity = _airplaneRepository.Delete(new PlaneEntity() { Id = id });
+        _airplaneRepository.Commit();
         return entity.ToBusiness();
     }
 }

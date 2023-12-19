@@ -5,7 +5,7 @@ using WebFlightInfrastructure.Repositories;
 
 namespace WebFlightBusiness.Services;
 
-public class FlightService : IFlightService
+public class FlightService : IBusinessService<Flight>
 {
     private readonly FlightRepository _flightRepository;
 
@@ -49,6 +49,7 @@ public class FlightService : IFlightService
     public Flight Delete(int id)
     {
         var entity = _flightRepository.Delete(new FlightEntity() { Id = id });
+        _flightRepository.Commit();
         return entity.ToBusiness();
     }
 }

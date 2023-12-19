@@ -17,7 +17,7 @@ public class AirplaneServiceTests
     public void Setup()
     {
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase")
+            .UseInMemoryDatabase(databaseName: "FlightDatabase1")
             .Options;
 
         _database = new FlightDatabase(options);
@@ -38,7 +38,7 @@ public class AirplaneServiceTests
     [TestMethod]
     public void GetAll_ReturnsAllPlanes()
     {
-        var airplaneService = new AirplaneService(new AirplaneRepository(_database));
+        IBusinessService<Plane> airplaneService = new AirplaneService(new AirplaneRepository(_database));
         var result = airplaneService.GetAll();
         Assert.IsNotNull(result);
         Assert.AreEqual(1, result.Count);
@@ -47,7 +47,7 @@ public class AirplaneServiceTests
     [TestMethod]
     public void Get_ReturnsSpecificPlane()
     {
-        var airplaneService = new AirplaneService(_repository);
+        IBusinessService<Plane> airplaneService = new AirplaneService(_repository);
         int planeId = 1;
 
         var result = airplaneService.Get(planeId);
@@ -60,7 +60,7 @@ public class AirplaneServiceTests
     [TestMethod]
     public void Update_ReturnsUpdatedPlane()
     {
-        var airplaneService = new AirplaneService(_repository);
+        IBusinessService<Plane> airplaneService = new AirplaneService(_repository);
         var updatedPlane = new Plane
         {
             Id = 1,
@@ -85,7 +85,7 @@ public class AirplaneServiceTests
     [TestMethod]
     public void Add_ReturnsAddedPlane()
     {
-        var airplaneService = new AirplaneService(_repository);
+        IBusinessService<Plane> airplaneService = new AirplaneService(_repository);
         var newPlane = new Plane
         {
             Name = "Plane 3"
@@ -99,10 +99,10 @@ public class AirplaneServiceTests
     [TestMethod]
     public void Delete_ReturnsDeletedPlane()
     {
-        var airplaneService = new AirplaneService(_repository);
+        IBusinessService<Plane> airplaneService = new AirplaneService(_repository);
 
         var result = airplaneService.Delete(1);
         Assert.IsNotNull(result);
-        Assert.AreEqual(1, result.Id); 
+        Assert.AreEqual(1, result.Id);
     }
 }

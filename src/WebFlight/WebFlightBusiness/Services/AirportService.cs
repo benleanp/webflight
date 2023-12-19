@@ -5,7 +5,7 @@ using WebFlightInfrastructure.Repositories;
 
 namespace WebFlightBusiness.Services;
 
-public class AirportService : IAirportService
+public class AirportService : IBusinessService<Airport>
 {
     private readonly AirportRepository _airportRepository;
 

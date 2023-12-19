@@ -7,9 +7,9 @@ namespace WebFlight.Components;
 
 public class AirplaneComponent : ViewComponent
 {
-    private readonly IAirplaneService _airplaneService;
+    private readonly IBusinessService<Plane> _airplaneService;
 
-    public AirplaneComponent(IAirplaneService airplaneService)
+    public AirplaneComponent(IBusinessService<Plane> airplaneService)
     {
         _airplaneService = airplaneService;
     }

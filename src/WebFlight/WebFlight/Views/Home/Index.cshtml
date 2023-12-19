@@ -52,6 +52,9 @@
                 <th>Name</th>
                 <th>Departure</th>
                 <th>Destination</th>
+                <th>Duration</th>
+                <th>Distance</th>
+                <th>Fuel Consumption</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -63,6 +66,9 @@
                     <td>@flight.Name</td>
                     <td>@flight.Departure?.Name</td>
                     <td>@flight.Destination?.Name</td>
+                    <td>@flight.Duration.ToString()</td>
+                    <td>@flight.Distance</td>
+                    <td>@flight.FuelConsumption</td>
                     <td>
                         <a asp-action="Index" asp-route-id="@flight.Id">Edit</a>|
                         <a asp-action="Remove" asp-route-id="@flight.Id">Remove</a>

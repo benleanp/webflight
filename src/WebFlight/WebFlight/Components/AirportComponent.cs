@@ -1,14 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using WebFlight.Models;
+using WebFlightBusiness.Models;
 using WebFlightBusiness.Services;
 
 namespace WebFlight.Components;
 
 public class AirportComponent : ViewComponent
 {
-    private readonly IAirportService _airportService;
+    private readonly IBusinessService<Airport> _airportService;
 
-    public AirportComponent(IAirportService airportService)
+    public AirportComponent(IBusinessService<Airport> airportService)
     {
         _airportService = airportService;
     }
