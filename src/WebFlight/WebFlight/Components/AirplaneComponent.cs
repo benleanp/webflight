@@ -17,10 +17,7 @@ public class AirplaneComponent : ViewComponent
     public IViewComponentResult Invoke(int? id)
     {
         var model = new AirplaneViewModel();
-        foreach (var airplane in _airplaneService.GetAll())
-        {
-            model.Planes.Add(airplane);
-        }
+        foreach (var airplane in _airplaneService.GetAll()) model.Planes.Add(airplane);
 
         if (id.HasValue)
         {
@@ -34,13 +31,8 @@ public class AirplaneComponent : ViewComponent
     public void Add(AirplaneViewModel model)
     {
         if (model.Mode == 0)
-        {
             _airplaneService.Add(model.Plane);
-        }
-        else if (model.Mode == 1)
-        {
-            _airplaneService.Update(model.Plane);
-        }
+        else if (model.Mode == 1) _airplaneService.Update(model.Plane);
     }
 
     [HttpPost]

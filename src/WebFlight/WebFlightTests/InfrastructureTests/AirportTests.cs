@@ -11,10 +11,10 @@ namespace WebFlightTests.InfrastructureTests;
 public class AirportTests
 {
     private Airport casaAirport;
-    private Airport tangerAirport;
-    private Plane planeBoeing;
     private Flight cmnFlight;
     private FlightDatabase database;
+    private Plane planeBoeing;
+    private Airport tangerAirport;
 
     [TestInitialize]
     public void Setup()
@@ -24,7 +24,7 @@ public class AirportTests
         tangerAirport = new Airport("Tanger", new GpsCoordinate(35.72626935970025, -5.912900916903573));
         cmnFlight = new Flight(casaAirport, tangerAirport, planeBoeing);
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase4")
+            .UseInMemoryDatabase("FlightDatabase4")
             .Options;
         database = new FlightDatabase(options);
     }
@@ -44,9 +44,9 @@ public class AirportTests
         database.SaveChanges();
         Assert.IsNotNull(result);
         Assert.AreEqual(1, result.Id);
-        Assert.IsNotNull(airportRepository.Get(new AirportEntity() { Id = 1 }));
+        Assert.IsNotNull(airportRepository.Get(new AirportEntity { Id = 1 }));
     }
-    
+
     [TestMethod]
     public void FlightDatabase_ShouldUpdate_Airport()
     {
@@ -58,9 +58,9 @@ public class AirportTests
         var result = airportRepository.Update(airportEntity);
         database.SaveChanges();
         Assert.IsNotNull(result);
-        Assert.AreEqual("Updated", result.Name); 
+        Assert.AreEqual("Updated", result.Name);
     }
-    
+
     [TestMethod]
     public void FlightDatabase_ShouldDelete_Airport()
     {
@@ -70,6 +70,6 @@ public class AirportTests
         database.SaveChanges();
         var result = airportRepository.Delete(airportEntity);
         database.SaveChanges();
-        Assert.IsNull(airportRepository.Get(airportEntity)); 
+        Assert.IsNull(airportRepository.Get(airportEntity));
     }
 }

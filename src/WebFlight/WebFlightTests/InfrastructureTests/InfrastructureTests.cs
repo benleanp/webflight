@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebFlightBusiness.Models;
-using WebFlightInfrastructure; 
+using WebFlightInfrastructure;
 
 namespace WebFlightTests.InfrastructureTests;
 
@@ -8,10 +8,10 @@ namespace WebFlightTests.InfrastructureTests;
 public class InfrastructureTests
 {
     private Airport casaAirport;
-    private Airport tangerAirport;
-    private Plane planeBoeing;
     private Flight cmnFlight;
     private FlightDatabase database;
+    private Plane planeBoeing;
+    private Airport tangerAirport;
 
     [TestInitialize]
     public void Setup()
@@ -21,13 +21,14 @@ public class InfrastructureTests
         tangerAirport = new Airport("Tanger", new GpsCoordinate(35.72626935970025, -5.912900916903573));
         cmnFlight = new Flight(casaAirport, tangerAirport, planeBoeing);
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase5")
+            .UseInMemoryDatabase("FlightDatabase5")
             .Options;
         database = new FlightDatabase(options);
     }
+
     [TestCleanup]
     public void Clean()
     {
         database.Dispose();
-    } 
+    }
 }

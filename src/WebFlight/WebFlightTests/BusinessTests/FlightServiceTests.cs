@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WebFlightBusiness.Extensions;
 using WebFlightBusiness.Models;
 using WebFlightBusiness.Services;
-using WebFlightInfrastructure; 
+using WebFlightInfrastructure;
 using WebFlightInfrastructure.Repositories;
 
 namespace WebFlightTests.BusinessTests;
@@ -10,11 +10,11 @@ namespace WebFlightTests.BusinessTests;
 [TestClass]
 public class FlightServiceTests
 {
-    private Airport casaAirport;
-    private Airport tangerAirport;
-    private Plane planeBoeing;
     private FlightDatabase _database;
     private FlightRepository _repository;
+    private Airport casaAirport;
+    private Plane planeBoeing;
+    private Airport tangerAirport;
 
     [TestInitialize]
     public void Setup()
@@ -23,7 +23,7 @@ public class FlightServiceTests
         casaAirport = new Airport("Casablanca", new GpsCoordinate(33.370105013882075, -7.584463116983734));
         tangerAirport = new Airport("Tanger", new GpsCoordinate(35.72626935970025, -5.912900916903573));
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase3")
+            .UseInMemoryDatabase("FlightDatabase3")
             .Options;
 
         _database = new FlightDatabase(options);
@@ -65,7 +65,7 @@ public class FlightServiceTests
     {
         IBusinessService<Flight> flightService = new FlightService(_repository);
 
-        var flight = flightService.Add(new Flight()
+        var flight = flightService.Add(new Flight
         {
             DepartureAirportId = 1,
             DestinationAirportId = 1,
@@ -74,7 +74,7 @@ public class FlightServiceTests
         });
 
         Assert.IsNotNull(flight);
-        Assert.IsNotNull(flight.Name); 
+        Assert.IsNotNull(flight.Name);
     }
 
     [TestMethod]
@@ -115,17 +115,17 @@ public class FlightServiceTests
     {
         IBusinessService<Flight> service = new FlightService(_repository);
         var result = service.Get(1);
-        Assert.IsNotNull(result); 
+        Assert.IsNotNull(result);
     }
 
     [TestMethod]
     public void Update_ReturnsUpdatedFlight()
     {
         IBusinessService<Flight> service = new FlightService(_repository);
-        var updatedAirports = new Flight()
+        var updatedAirports = new Flight
         {
             Id = 1,
-            Name = "Airport 2 Updated",
+            Name = "Airport 2 Updated"
         };
 
         var result = service.Update(updatedAirports);
@@ -139,7 +139,7 @@ public class FlightServiceTests
     public void Add_ReturnsAddedFlight()
     {
         IBusinessService<Flight> service = new FlightService(_repository);
-        var flight = new Flight()
+        var flight = new Flight
         {
             Name = "Flight X"
         };

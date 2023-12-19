@@ -2,19 +2,6 @@ namespace WebFlightBusiness.Models;
 
 public class Flight
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public int DepartureAirportId { get; set; }
-    public int DestinationAirportId { get; set; }
-    public int PlaneId { get; set; }
-    public Airport Departure { get; set; }
-    public Airport Destination { get; set; }
-    public Plane Plane { get; set; }
-    public int Distance { get; set; }
-    public int FuelConsumption { get; set; }
-    public TimeOnly Duration { get; set; }
-
-
     public Flight()
     {
         Departure = new Airport();
@@ -32,6 +19,18 @@ public class Flight
         DepartureAirportId = Departure.Id;
     }
 
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int DepartureAirportId { get; set; }
+    public int DestinationAirportId { get; set; }
+    public int PlaneId { get; set; }
+    public Airport Departure { get; set; }
+    public Airport Destination { get; set; }
+    public Plane Plane { get; set; }
+    public int Distance { get; set; }
+    public int FuelConsumption { get; set; }
+    public TimeOnly Duration { get; set; }
+
     public int CalculateDistance()
     {
         Distance = GpsCoordinate.CalculateDistance(Departure.Coordinate, Destination.Coordinate);
@@ -46,7 +45,7 @@ public class Flight
         if (Distance <= 0)
             throw new ApplicationException("Distance must not be equal or below 0");
 
-        FuelConsumption = (Distance / 100) * Plane.FuelConsumption;
+        FuelConsumption = Distance / 100 * Plane.FuelConsumption;
         return FuelConsumption;
     }
 
@@ -58,7 +57,7 @@ public class Flight
         if (Distance <= 0)
             throw new ApplicationException("Distance must not be equal or below 0");
 
-        Duration = TimeOnly.FromTimeSpan(TimeSpan.FromHours(((double)Distance / Plane.Speed)) +
+        Duration = TimeOnly.FromTimeSpan(TimeSpan.FromHours((double)Distance / Plane.Speed) +
                                          Plane.TakeoffDuration.ToTimeSpan());
 
         return Duration;

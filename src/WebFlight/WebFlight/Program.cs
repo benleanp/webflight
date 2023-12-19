@@ -12,10 +12,7 @@ builder.Services.AddControllersWithViews().AddRazorOptions(options =>
 {
     options.ViewLocationFormats.Add("/{0}.cshtml");
 });
-builder.Services.AddDbContextPool<FlightDatabase>(options =>
-{
-    options.UseInMemoryDatabase(databaseName: "FlightDatabase");
-});
+builder.Services.AddDbContextPool<FlightDatabase>(options => { options.UseInMemoryDatabase("FlightDatabase"); });
 
 builder.Services.AddScoped<AirportRepository>();
 builder.Services.AddScoped<FlightRepository>();
@@ -31,7 +28,7 @@ var app = builder.Build();
 using (var i = app.Services.CreateScope())
 {
     var dbContext = i.ServiceProvider.GetService(typeof(FlightDatabase)) as FlightDatabase;
-    var planeBoeing = new PlaneEntity()
+    var planeBoeing = new PlaneEntity
     {
         Name = "Boeing X",
         Speed = 500,
@@ -39,13 +36,13 @@ using (var i = app.Services.CreateScope())
         TakeoffEffort = 3,
         FuelConsumption = 5
     };
-    var casaAirport = new AirportEntity()
+    var casaAirport = new AirportEntity
     {
         Name = "Casablanca",
         Latitude = 33.370105013882075,
         Longitude = -7.584463116983734
     };
-    var tangierAirport = new AirportEntity()
+    var tangierAirport = new AirportEntity
     {
         Name = "Tanger",
         Latitude = 35.7262693597002,
@@ -70,7 +67,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    "default",
+    "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

@@ -1,12 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Moq;
 using WebFlight.Controllers;
 using WebFlight.Models;
 using WebFlightBusiness.Models;
 using WebFlightBusiness.Services;
 using WebFlightInfrastructure;
-using WebFlightInfrastructure.Entities;
 using WebFlightInfrastructure.Repositories;
 
 namespace WebFlightTests.WebTests.ControllersTests;
@@ -20,7 +18,7 @@ public class HomeControllerTests
     public void Setup()
     {
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase6")
+            .UseInMemoryDatabase("FlightDatabase6")
             .Options;
 
         _database = new FlightDatabase(options);
@@ -85,6 +83,6 @@ public class HomeControllerTests
         var controller = new HomeController(flightService, airportService, planeService);
         controller.Remove(1);
 
-        Assert.AreEqual(1, flightService.GetAll().Count);
+        Assert.AreEqual(0, flightService.GetAll().Count);
     }
 }

@@ -12,7 +12,7 @@ public static class AirportExtension
 
         var p = new Airport(entity.Name, new GpsCoordinate(entity.Latitude, entity.Longitude))
         {
-            Id = entity.Id,
+            Id = entity.Id
         };
 
         return p;
@@ -23,7 +23,7 @@ public static class AirportExtension
         if (model == null)
             throw new ArgumentNullException(nameof(model));
 
-        var entity = new AirportEntity()
+        var entity = new AirportEntity
         {
             Id = model.Id,
             Latitude = model.Coordinate.Latitude,

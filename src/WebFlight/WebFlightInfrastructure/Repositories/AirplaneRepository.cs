@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using WebFlightInfrastructure.Entities;
 
 namespace WebFlightInfrastructure.Repositories;

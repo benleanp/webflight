@@ -18,17 +18,14 @@ public class AirportService : IBusinessService<Airport>
     {
         var airports = new List<Airport>();
 
-        foreach (var airportEntity in _airportRepository.GetAll())
-        {
-            airports.Add(airportEntity.ToBusiness());
-        }
+        foreach (var airportEntity in _airportRepository.GetAll()) airports.Add(airportEntity.ToBusiness());
 
         return airports;
     }
 
     public Airport Get(int id)
     {
-        var entity = _airportRepository.Get(new AirportEntity() { Id = id });
+        var entity = _airportRepository.Get(new AirportEntity { Id = id });
         return entity.ToBusiness();
     }
 
@@ -38,6 +35,7 @@ public class AirportService : IBusinessService<Airport>
         _airportRepository.Commit();
         return entity.ToBusiness();
     }
+
     public Airport Update(Airport model)
     {
         var entity = _airportRepository.Update(model.ToEntity());
@@ -47,7 +45,7 @@ public class AirportService : IBusinessService<Airport>
 
     public Airport Delete(int id)
     {
-        var entity = _airportRepository.Delete(new AirportEntity() { Id = id });
+        var entity = _airportRepository.Delete(new AirportEntity { Id = id });
         _airportRepository.Commit();
         return entity.ToBusiness();
     }

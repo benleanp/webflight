@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WebFlight.Components;
-using WebFlight.Models; 
+using WebFlight.Models;
 
 namespace WebFlight.Controllers;
 
@@ -25,7 +25,7 @@ public class AirportsController : Controller
     {
         _airportComponent.Add(airportView);
         return RedirectToAction("Index");
-    } 
+    }
 
     [HttpGet]
     public IActionResult Remove(int id)

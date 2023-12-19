@@ -17,14 +17,14 @@ public class AirplaneServiceTests
     public void Setup()
     {
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase1")
+            .UseInMemoryDatabase("FlightDatabase1")
             .Options;
 
         _database = new FlightDatabase(options);
         _repository = new AirplaneRepository(_database);
-        _database.Planes.Add(new PlaneEntity()
+        _database.Planes.Add(new PlaneEntity
         {
-            Name = "Plane 1",
+            Name = "Plane 1"
         });
         _database.SaveChanges();
     }
@@ -48,7 +48,7 @@ public class AirplaneServiceTests
     public void Get_ReturnsSpecificPlane()
     {
         IBusinessService<Plane> airplaneService = new AirplaneService(_repository);
-        int planeId = 1;
+        var planeId = 1;
 
         var result = airplaneService.Get(planeId);
 

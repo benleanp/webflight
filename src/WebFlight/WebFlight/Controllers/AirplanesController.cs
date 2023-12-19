@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using WebFlight.Models;
 using WebFlight.Components;
+using WebFlight.Models;
 
 namespace WebFlight.Controllers;
 

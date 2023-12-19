@@ -8,23 +8,23 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\WebFlightBusiness\WebFlightBusiness.csproj" />
-      <ProjectReference Include="..\WebFlightInfrastructure\WebFlightInfrastructure.csproj" />
+        <ProjectReference Include="..\WebFlightBusiness\WebFlightBusiness.csproj"/>
+        <ProjectReference Include="..\WebFlightInfrastructure\WebFlightInfrastructure.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.14" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.14"/>
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Views\Flights\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Flights\Index.cshtml"/>
     </ItemGroup>
 
 </Project>

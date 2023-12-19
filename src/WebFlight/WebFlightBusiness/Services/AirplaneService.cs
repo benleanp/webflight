@@ -18,17 +18,14 @@ public sealed class AirplaneService : IBusinessService<Plane>
     {
         var planes = new List<Plane>();
 
-        foreach (var entity in _airplaneRepository.GetAll())
-        {
-            planes.Add(entity.ToBusiness());
-        }
+        foreach (var entity in _airplaneRepository.GetAll()) planes.Add(entity.ToBusiness());
 
         return planes;
     }
 
     public Plane Get(int id)
     {
-        var entity = _airplaneRepository.Get(new PlaneEntity() { Id = id });
+        var entity = _airplaneRepository.Get(new PlaneEntity { Id = id });
         return entity.ToBusiness();
     }
 
@@ -48,7 +45,7 @@ public sealed class AirplaneService : IBusinessService<Plane>
 
     public Plane Delete(int id)
     {
-        var entity = _airplaneRepository.Delete(new PlaneEntity() { Id = id });
+        var entity = _airplaneRepository.Delete(new PlaneEntity { Id = id });
         _airplaneRepository.Commit();
         return entity.ToBusiness();
     }

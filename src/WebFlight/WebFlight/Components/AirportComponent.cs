@@ -17,10 +17,7 @@ public class AirportComponent : ViewComponent
     public IViewComponentResult Invoke(int? id)
     {
         var model = new AirportViewModel();
-        foreach (var airport in _airportService.GetAll())
-        {
-            model.Airports.Add(airport);
-        }
+        foreach (var airport in _airportService.GetAll()) model.Airports.Add(airport);
 
         if (id.HasValue)
         {
@@ -34,13 +31,8 @@ public class AirportComponent : ViewComponent
     public void Add(AirportViewModel model)
     {
         if (model.Mode == 0)
-        {
             _airportService.Add(model.Airport);
-        }
-        else if (model.Mode == 1)
-        {
-            _airportService.Update(model.Airport);
-        }
+        else if (model.Mode == 1) _airportService.Update(model.Airport);
     }
 
     public void Remove(int id)

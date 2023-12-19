@@ -27,7 +27,7 @@ public static class PlaneExtension
         if (model == null)
             throw new ArgumentNullException(nameof(model));
 
-        var entity = new PlaneEntity()
+        var entity = new PlaneEntity
         {
             Id = model.Id,
             Name = model.Name,

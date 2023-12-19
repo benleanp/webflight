@@ -25,17 +25,14 @@ public class FlightService : IBusinessService<Flight>
     {
         var result = _flightRepository.GetAll();
         var flights = new List<Flight>();
-        foreach (var item in result)
-        {
-            flights.Add(item.ToBusiness());
-        }
+        foreach (var item in result) flights.Add(item.ToBusiness());
 
         return flights;
     }
 
     public Flight Get(int id)
     {
-        return _flightRepository.Get(new FlightEntity() { Id = id })?.ToBusiness()!;
+        return _flightRepository.Get(new FlightEntity { Id = id })?.ToBusiness()!;
     }
 
     public Flight Update(Flight model)
@@ -48,7 +45,7 @@ public class FlightService : IBusinessService<Flight>
 
     public Flight Delete(int id)
     {
-        var entity = _flightRepository.Delete(new FlightEntity() { Id = id });
+        var entity = _flightRepository.Delete(new FlightEntity { Id = id });
         _flightRepository.Commit();
         return entity.ToBusiness();
     }

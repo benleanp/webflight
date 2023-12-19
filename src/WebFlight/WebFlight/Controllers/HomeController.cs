@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebFlight.Models;
 using WebFlightBusiness.Models;
@@ -9,9 +8,9 @@ namespace WebFlight.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IBusinessService<Flight> _flightService;
-    private readonly IBusinessService<Airport> _airportService;
     private readonly IBusinessService<Plane> _airplaneService;
+    private readonly IBusinessService<Airport> _airportService;
+    private readonly IBusinessService<Flight> _flightService;
 
     public HomeController(IBusinessService<Flight> flightService, IBusinessService<Airport> airportService,
         IBusinessService<Plane> airplaneService)
@@ -65,13 +64,8 @@ public class HomeController : Controller
         model.Flight.Destination = null;
         model.Flight.Departure = null;
         if (model.Mode == 0)
-        {
             _flightService.Add(model.Flight);
-        }
-        else if (model.Mode == 1)
-        {
-            _flightService.Update(model.Flight);
-        }
+        else if (model.Mode == 1) _flightService.Update(model.Flight);
 
         return RedirectToAction("Index");
     }

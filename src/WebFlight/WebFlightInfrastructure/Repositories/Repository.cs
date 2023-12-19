@@ -5,19 +5,16 @@ namespace WebFlightInfrastructure.Repositories;
 
 public abstract class Repository<T> where T : BaseEntity
 {
-    protected DbContext DbContext { get; }
-
     protected Repository(DbContext dbContext)
     {
         DbContext = dbContext;
     }
 
+    protected DbContext DbContext { get; }
+
     public virtual T Get(BaseEntity entity)
     {
-        if (entity == null)
-        {
-            return default(T)!;
-        }
+        if (entity == null) return default!;
 
         return DbContext.Set<T>().SingleOrDefault(x => x.Id == entity.Id);
     }

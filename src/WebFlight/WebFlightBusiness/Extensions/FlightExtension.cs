@@ -10,7 +10,7 @@ public static class FlightExtension
         if (entity == null)
             throw new ArgumentNullException(nameof(entity));
 
-        var model = new Flight()
+        var model = new Flight
         {
             Departure = entity.Departure?.ToBusiness()!,
             Destination = entity.Destination?.ToBusiness()!,
@@ -30,13 +30,13 @@ public static class FlightExtension
         if (model == null)
             throw new ArgumentNullException(nameof(model));
 
-        var entity = new FlightEntity()
+        var entity = new FlightEntity
         {
             PlaneId = model.PlaneId,
             DepartureAirportId = model.DepartureAirportId,
             DestinationAirportId = model.DestinationAirportId,
             Id = model.Id,
-            Name = model.Name,
+            Name = model.Name
         };
 
         return entity;

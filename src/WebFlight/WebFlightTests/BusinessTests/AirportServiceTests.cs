@@ -17,14 +17,14 @@ public class AirportServiceTests
     public void Setup()
     {
         var options = new DbContextOptionsBuilder<FlightDatabase>()
-            .UseInMemoryDatabase(databaseName: "FlightDatabase2")
+            .UseInMemoryDatabase("FlightDatabase2")
             .Options;
 
         _database = new FlightDatabase(options);
         _repository = new AirportRepository(_database);
-        _database.Airports.Add(new AirportEntity()
+        _database.Airports.Add(new AirportEntity
         {
-            Name = "Airport 1",
+            Name = "Airport 1"
         });
         _database.SaveChanges();
     }
@@ -40,7 +40,7 @@ public class AirportServiceTests
     {
         IBusinessService<Airport> airportService = new AirportService(new AirportRepository(_database));
         var result = airportService.GetAll();
-        Assert.IsNotNull(result); 
+        Assert.IsNotNull(result);
     }
 
     [TestMethod]
@@ -58,7 +58,7 @@ public class AirportServiceTests
     public void Update_ReturnsUpdatedAirports()
     {
         IBusinessService<Airport> airportService = new AirportService(_repository);
-        var updatedAirports = new Airport()
+        var updatedAirports = new Airport
         {
             Id = 1,
             Name = "Airport 2",
