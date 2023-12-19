@@ -6,17 +6,14 @@ using WebFlightBusiness.Models;
 namespace WebFlight.Models;
 
 public class HomeViewModel
-{ 
-    public string FlightName { get; set; } 
-    public List<SelectListItem> DepartureAirports { get; private set; }
-    public List<SelectListItem> DestinationAirports { get; private set; }
-    public List<Plane> Planes { get; private set; }
-    
-    public HomeViewModel()
-    {
-        FlightName = "";
-        DepartureAirports = new List<SelectListItem>();
-        DestinationAirports = new List<SelectListItem>();
-        Planes = new List<Plane>();
-    }
+{
+    public List<Flight> Flights { get; set; } = new();
+    public List<SelectListItem> DepartureAirports { get; private set; } = new();
+    public List<SelectListItem> DestinationAirports { get; private set; } = new();
+    public List<SelectListItem> Planes { get; private set; } = new();
+    public Flight Flight { get; set; } = new();
+    public int SelectedPlaneId { get; set; }
+    public int SelectedDepartureFlightId { get; set; }
+    public int SelectedDestinationFlightId { get; set; }
+    public int Mode { get; set; }
 }

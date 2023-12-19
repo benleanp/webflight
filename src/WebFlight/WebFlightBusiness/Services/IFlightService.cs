@@ -4,7 +4,9 @@ namespace WebFlightBusiness.Services;
 
 public interface IFlightService
 {
-    Flight CreateFlight(Airport src, Airport dest, Plane plane);
+    Flight Add(Flight model);
     List<Flight> GetAll();
     Flight Get(int id);
+    Flight Update(Flight model);
+    Flight Delete(int id);
 }

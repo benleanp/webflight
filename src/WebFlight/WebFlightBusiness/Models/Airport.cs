@@ -9,7 +9,7 @@ public class Airport
 
     public Airport()
     {
-        
+        Coordinate = new GpsCoordinate();
     }
     public Airport(string name, GpsCoordinate coordinate)
     {

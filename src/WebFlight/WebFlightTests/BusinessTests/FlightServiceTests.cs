@@ -52,7 +52,7 @@ public class FlightServiceTests
         var flight = flightService.CreateFlight(casaAirport, tangerAirport, planeBoeing);
 
         Assert.IsNotNull(flight);
-        Assert.IsNotNull(flight.FlightName);
+        Assert.IsNotNull(flight.Name);
         Assert.IsNotNull(flight.Departure);
         Assert.IsNotNull(flight.Destination);
         Assert.IsNotNull(flight.Plane);

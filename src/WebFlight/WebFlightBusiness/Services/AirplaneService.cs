@@ -35,6 +35,7 @@ public sealed class AirplaneService : IAirplaneService
     public Plane Update(Plane model)
     {
         var entity = _airplaneRepository.Update(model.ToEntity());
+        _airplaneRepository.Commit();
         return entity.ToBusiness();
     }
 

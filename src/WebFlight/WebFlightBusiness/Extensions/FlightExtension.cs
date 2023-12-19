@@ -15,10 +15,10 @@ public static class FlightExtension
             Departure = entity.Departure?.ToBusiness()!,
             Destination = entity.Destination?.ToBusiness()!,
             Plane = entity.Plane?.ToBusiness()!,
-            FlightName = entity.FlightName,
-            FuelConsumption = entity.FuelConsumption,
-            Distance = entity.Distance,
-            Duration = entity.Duration,
+            PlaneId = entity.PlaneId,
+            DepartureAirportId = entity.DepartureAirportId,
+            DestinationAirportId = entity.DestinationAirportId,
+            Name = entity.Name,
             Id = entity.Id
         };
 
@@ -35,6 +35,9 @@ public static class FlightExtension
             Departure = model.Departure.ToEntity(),
             Destination = model.Destination.ToEntity(),
             Plane = model.Plane.ToEntity(),
+            PlaneId = model.PlaneId,
+            DepartureAirportId = model.DepartureAirportId,
+            DestinationAirportId = model.DestinationAirportId,
             Id = model.Id
         };
 

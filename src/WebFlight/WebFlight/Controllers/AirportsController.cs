@@ -1,34 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
-using WebFlight.Models;
-using WebFlight.ViewComponents;
+using WebFlight.Components;
+using WebFlight.Models; 
 
 namespace WebFlight.Controllers;
 
 public class AirportsController : Controller
 {
-    private readonly AirportViewComponent _airportComponent;
+    private readonly AirportComponent _airportComponent;
 
-    public AirportsController(AirportViewComponent airportComponent)
+    public AirportsController(AirportComponent airportComponent)
     {
         _airportComponent = airportComponent;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(int? id)
     {
+        ViewData["id"] = id;
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Add(AirportViewModel airport)
+    public IActionResult Add(AirportViewModel airportView)
     {
-        _airportComponent.AddAirport(airport);
+        _airportComponent.Add(airportView);
         return RedirectToAction("Index");
-    }
+    } 
 
+    [HttpGet]
     public IActionResult Remove(int id)
     {
-        _airportComponent.RemoveAirport(id);
+        _airportComponent.Remove(id);
         return RedirectToAction("Index");
     }
 }

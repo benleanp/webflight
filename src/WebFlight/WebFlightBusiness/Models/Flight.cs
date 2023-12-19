@@ -3,14 +3,17 @@ namespace WebFlightBusiness.Models;
 public class Flight
 {
     public int Id { get; set; }
-    public string FlightName { get; set; }
+    public string Name { get; set; }
+    public int DepartureAirportId { get; set; }
+    public int DestinationAirportId { get; set; }
+    public int PlaneId { get; set; }
     public Airport Departure { get; set; }
     public Airport Destination { get; set; }
     public Plane Plane { get; set; }
     public int Distance { get; set; }
     public int FuelConsumption { get; set; }
     public TimeOnly Duration { get; set; }
-    
+
 
     public Flight()
     {
@@ -24,7 +27,9 @@ public class Flight
         Departure = dept ?? throw new ArgumentNullException(nameof(dept));
         Destination = dest ?? throw new ArgumentNullException(nameof(dest));
         Plane = plane ?? throw new ArgumentNullException(nameof(plane));
-        FlightName = $"Flight {dept.Name}-{dest.Name}";
+        PlaneId = plane.Id;
+        DestinationAirportId = Destination.Id;
+        DepartureAirportId = Departure.Id;
     }
 
     public int CalculateDistance()

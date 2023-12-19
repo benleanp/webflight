@@ -1,9 +1,10 @@
+using WebFlightBusiness.Models;
+
 namespace WebFlight.Models;
 
 public class AirportViewModel
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public double Latitude { get; set; }
-    public double Longitude { get; set; }
+    public List<Airport> Airports { get; set; } = new();
+    public Airport Airport { get; set; } = new();
+    public int Mode { get; set; }
 }

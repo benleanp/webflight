@@ -23,4 +23,8 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.14" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Flights\Index.cshtml" />
+    </ItemGroup>
+
 </Project>

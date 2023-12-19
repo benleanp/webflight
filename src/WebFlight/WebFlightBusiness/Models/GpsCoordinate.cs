@@ -6,6 +6,10 @@ public class GpsCoordinate
     public double Latitude { get; set; }
     public double Longitude { get; set; }
 
+    public GpsCoordinate()
+    {
+        
+    }
     public GpsCoordinate(double lat, double lon)
     {
         Latitude = lat;

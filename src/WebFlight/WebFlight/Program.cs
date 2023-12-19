@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using WebFlight.ViewComponents;
+using WebFlight.Components;
+
 using WebFlightBusiness.Services;
 using WebFlightInfrastructure;
 using WebFlightInfrastructure.Repositories;
@@ -21,8 +22,8 @@ builder.Services.AddScoped<AirplaneRepository>();
 builder.Services.AddScoped<IAirportService, AirportService>();
 builder.Services.AddScoped<IFlightService, FlightService>();
 builder.Services.AddScoped<IAirplaneService, AirplaneService>();
-builder.Services.AddScoped<AirportViewComponent>();
-builder.Services.AddScoped<AirplaneViewComponent>();
+builder.Services.AddScoped<AirportComponent>();
+builder.Services.AddScoped<AirplaneComponent>(); 
 
 var app = builder.Build();
 
@@ -33,10 +34,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
+app.UseStaticFiles(); 
+app.UseRouting(); 
 app.UseAuthorization();
 
 app.MapControllerRoute(

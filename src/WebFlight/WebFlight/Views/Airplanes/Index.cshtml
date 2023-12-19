@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Air Planes";
+    ViewData["Title"] = "Airplanes";
 }
 
 <div class="text-center">
@@ -8,6 +8,6 @@
 
 <div class="container-fluid mt-4">
     <div class="row">
-        @await Component.InvokeAsync("Airplane")
+        @await Component.InvokeAsync("AirplaneComponent", ViewData["id"])
     </div>
 </div>

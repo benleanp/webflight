@@ -1,0 +1,64 @@
+@model AirportViewModel
+
+<div class="container-fluid mt-4">
+    <h2>Create New AirportComponents</h2>
+    <div class="row">
+        <form asp-action="Add" method="post" class="mt-3">
+            <input type="hidden" asp-for="Mode"/>
+            <input type="hidden" asp-for="Airport.Id"/>
+            <div class="form-group">
+                <label asp-for="Airport.Name">Name:</label>
+                <input asp-for="Airport.Name" type="text" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Airport.Coordinate.Latitude">Latitude:</label>
+                <input asp-for="Airport.Coordinate.Latitude" type="number" step="any" class="form-control" required/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Airport.Coordinate.Longitude">Longitude:</label>
+                <input asp-for="Airport.Coordinate.Longitude" type="number" step="any" class="form-control" required/>
+            </div>
+            @if (Model.Mode == 0)
+            {
+                <button type="submit" class="w-25 btn btn-primary mt-4">Add</button>
+            }
+            @if (Model.Mode == 1)
+            {
+                <button type="submit" class="w-25 btn btn-primary mt-4">Update</button>
+            }
+
+        </form>
+    </div>
+</div>
+<div><hr/></div>
+<div class="container-fluid mt-4">
+    <h2>Available Airports</h2>
+    <div class="row">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var airport in Model.Airports)
+            {
+                <tr>
+                    <td>@airport.Id</td>
+                    <td>@airport.Name</td>
+                    <td>@airport.Coordinate.Latitude</td>
+                    <td>@airport.Coordinate.Longitude</td>
+                    <td>
+                        <a asp-action="Index" asp-route-id="@airport.Id">Edit</a>|
+                        <a asp-action="Remove" asp-route-id="@airport.Id">Remove</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

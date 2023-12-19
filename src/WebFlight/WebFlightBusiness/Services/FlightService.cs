@@ -14,27 +14,11 @@ public class FlightService : IFlightService
         _flightRepository = flightRepository;
     }
 
-    public Flight CreateFlight(Airport dept, Airport dest, Plane plane)
+    public Flight Add(Flight model)
     {
-        var flight = new FlightEntity()
-        {
-            Departure = dept.ToEntity(),
-            Destination = dest.ToEntity(),
-            Plane = plane.ToEntity()
-        };
-        var result = _flightRepository.Create(flight);
+        var result = _flightRepository.Create(model.ToEntity());
         _flightRepository.Commit();
-        return new Flight()
-        {
-            Departure = result.Departure.ToBusiness(),
-            Destination = result.Destination.ToBusiness(),
-            Plane = result.Plane.ToBusiness(),
-            FlightName = result.FlightName,
-            FuelConsumption = result.FuelConsumption,
-            Distance = result.Distance,
-            Duration = result.Duration,
-            Id = result.Id
-        };
+        return result.ToBusiness();
     }
 
     public List<Flight> GetAll()
@@ -52,5 +36,19 @@ public class FlightService : IFlightService
     public Flight Get(int id)
     {
         return _flightRepository.Get(new FlightEntity() { Id = id })?.ToBusiness()!;
+    }
+
+    public Flight Update(Flight model)
+    {
+        var entity = _flightRepository.Update(model.ToEntity());
+        _flightRepository.Commit();
+        return entity.ToBusiness();
+    }
+
+
+    public Flight Delete(int id)
+    {
+        var entity = _flightRepository.Delete(new FlightEntity() { Id = id });
+        return entity.ToBusiness();
     }
 }

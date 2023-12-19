@@ -1,28 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using WebFlight.Models;
-using WebFlight.ViewComponents;
+using WebFlight.Components;
 
 namespace WebFlight.Controllers;
 
 public class AirplanesController : Controller
 {
-    private readonly AirplaneViewComponent _airplaneComponent;
+    private readonly AirplaneComponent _airplaneComponent;
 
-    public AirplanesController(AirplaneViewComponent airplaneComponent)
+    public AirplanesController(AirplaneComponent airplaneComponent)
     {
         _airplaneComponent = airplaneComponent;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(int? id)
     {
+        ViewData["id"] = id;
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Add(AirplaneViewModel airplane)
+    public IActionResult Add(AirplaneViewModel airplaneView)
     {
-        _airplaneComponent.Add(airplane);
+        _airplaneComponent.Add(airplaneView);
         return RedirectToAction("Index");
     }
 
